@@ -9,11 +9,12 @@
     "
     :class="{'animate-pulse':loading}"
   >
-
+ 
     <img
       class="lg:h-48 md:h-36 w-full object-cover object-center"
-      :src="logo"
-      alt="blog"
+      :src="logo?logo:require('../../assets/images/no-image.png')"
+      :alt="logo"
+      @error.native="handleError"
     />
     <div class="p-6">
       <h2
@@ -112,6 +113,12 @@ export default {
         description: String,
         link: String
     },
+    methods:{
+      handleError(image){
+        image.onerror = ""
+        image.src = "../../assets/images/no-image.png"
+      }
+    }
 }
 </script>
 

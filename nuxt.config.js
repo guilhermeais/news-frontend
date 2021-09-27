@@ -1,3 +1,4 @@
+// import io from 'io.config'
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -32,10 +33,20 @@ export default {
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
-  modules: ['@nuxtjs/strapi'],
+  modules: ['@nuxtjs/strapi', 'nuxt-socket-io'],
+
   strapi: {
     url: 'http://localhost:1337',
     entities: ['newspapper'],
+  },
+
+  io: {
+    sockets: [
+      {
+        name: 'main',
+        url: 'http://localhost:1337',
+      },
+    ],
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
